@@ -16,24 +16,27 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            playerRigidbody.AddForce(0f, 0f, speed);
+            playerRigidbody.AddForce(0f, 0f, -speed);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            playerRigidbody.AddForce(0f, 0f, -speed);
+            playerRigidbody.AddForce(0f, 0f, speed);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            playerRigidbody.AddForce(speed,0f, 0f);
+            playerRigidbody.AddForce(-speed,0f, 0f);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            playerRigidbody.AddForce(-speed,0f, 0f);
+            playerRigidbody.AddForce(speed,0f, 0f);
         }
     }
 
     public void Die()
     {
         gameObject.SetActive(false);
+
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.EndGame();
     }
 }
